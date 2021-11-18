@@ -31,9 +31,9 @@ namespace DBFrutos2.Persistencia
             return _appContext.Usuario;
         }
 
-        Paciente IRepositorioUsuario.GetUsuario(int idPaciente)
+        Paciente IRepositorioUsuario.GetUsuario(int idUsuario)
         {
-            return _appContext.Pacientes.Find(idPaciente);
+            return _appContext.Usuario.Find(idUsuario);
             /*
             var pac = _appContext.Pacientes
                        .Where(p => p.Id == idPaciente)
@@ -43,21 +43,21 @@ namespace DBFrutos2.Persistencia
             */
         }
 
-        Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
+        Usuario IRepositorioUsuario.UpdateUsuario(Usuario usuario)
         {
-            var pacienteEncontrado = _appContext.Pacientes.Find(paciente.Id);
-            if (pacienteEncontrado != null)
+            var usuarioEncontrado = _appContext.Usuario.Find(usuario.Id);
+            if (usuarioEncontrado != null)
             {
-                pacienteEncontrado.Nombre = paciente.Nombre;
-                pacienteEncontrado.Apellidos = paciente.Apellidos;
-                pacienteEncontrado.NumeroTelefono = paciente.NumeroTelefono;
-                pacienteEncontrado.Genero = paciente.Genero;
-                pacienteEncontrado.Direccion = paciente.Direccion;
-                pacienteEncontrado.Ciudad = paciente.Ciudad;
-                pacienteEncontrado.FechaNacimiento = paciente.FechaNacimiento;
+                usuarioEncontrado.Nombre = usuario.Nombre;
+                usuarioEncontrado.Apellidos = usuario.Apellidos;
+                usuarioEncontrado.NumeroTelefono = usuario.NumeroTelefono;
+                usuarioEncontrado.Genero = usuario.Genero;
+                usuarioEncontrado.Direccion = usuario.Direccion;
+                usuarioEncontrado.Ciudad = usuario.Ciudad;
+                usuarioEncontrado.FechaNacimiento = usuario.FechaNacimiento;
                 _appContext.SaveChanges();
             }
-            return pacienteEncontrado;
+            return usuarioEncontrado;
         }
         Medico IRepositorioPaciente.AsignarMedico(int idPaciente, int idMedico)
         {
